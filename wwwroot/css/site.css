@@ -1,0 +1,373 @@
+
+:root {
+    --cn-red: #e50914;
+    --cn-red-hover: #b80710;
+    --cn-black: #141414;
+    --cn-dark: #1f1f1f;
+    --cn-card: #242424;
+    --cn-white: #ffffff;
+    --cn-gray: #b3b3b3;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.cn-body {
+    background-color: var(--cn-black);
+    color: var(--cn-white);
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+
+.cn-navbar {
+    background: rgba(15, 15, 15, 0.97);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+.cn-logo {
+    font-size: 27px;
+    letter-spacing: 1px;
+}
+
+.brand-cine {
+    color: var(--cn-red);
+}
+
+.cn-navbar .nav-link {
+    color: #e5e5e5;
+    font-weight: 500;
+    margin: 0 8px;
+    transition: color .2s;
+}
+
+    .cn-navbar .nav-link:hover,
+    .cn-navbar .nav-link.active {
+        color: var(--cn-red);
+    }
+
+.cn-tagline {
+    color: var(--cn-gray);
+    font-size: 13px;
+}
+
+.cn-profile {
+    width: 36px;
+    height: 36px;
+    background: var(--cn-red);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* MAIN */
+
+.cn-main {
+    min-height: 75vh;
+}
+
+    .cn-main h1,
+    .cn-main h2,
+    .cn-main h3 {
+        color: var(--cn-white);
+    }
+
+/* BUTTONS */
+
+.btn-cn {
+    background: var(--cn-red);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: .2s;
+}
+
+    .btn-cn:hover {
+        background: var(--cn-red-hover);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+.btn-outline-cn {
+    border: 1px solid var(--cn-red);
+    color: white;
+    background: transparent;
+    padding: 9px 20px;
+    border-radius: 5px;
+}
+
+    .btn-outline-cn:hover {
+        background: var(--cn-red);
+        color: white;
+    }
+
+/* CARDS */
+
+.cn-card {
+    background: var(--cn-card);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+    height: 100%;
+}
+
+    .cn-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,.45);
+    }
+
+    .cn-card img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+    }
+
+.cn-card-body {
+    padding: 16px;
+}
+
+/* FORMS */
+
+.cn-form-card {
+    background: var(--cn-dark);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+    padding: 28px;
+}
+
+.cn-input,
+.form-control.cn-input,
+.form-select.cn-input {
+    background-color: #292929;
+    color: white;
+    border: 1px solid #484848;
+}
+
+    .cn-input:focus,
+    .form-control.cn-input:focus,
+    .form-select.cn-input:focus {
+        background-color: #292929;
+        color: white;
+        border-color: var(--cn-red);
+        box-shadow: 0 0 0 .2rem rgba(229,9,20,.2);
+    }
+
+    .cn-input::placeholder {
+        color: #aaa;
+    }
+
+.cn-form-card .form-label {
+    color: #eee;
+    font-weight: 500;
+}
+
+/* TABLES */
+
+.cn-table {
+    background: var(--cn-dark);
+    color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .cn-table th {
+        background: #292929;
+        color: white;
+        border-color: #444;
+    }
+
+    .cn-table td {
+        background: var(--cn-dark);
+        color: #ddd;
+        border-color: #444;
+        vertical-align: middle;
+    }
+
+/* BADGES */
+
+.cn-badge-active {
+    background: #198754;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.cn-badge-inactive {
+    background: #6c757d;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+/* FOOTER */
+
+.cn-footer {
+    background: #0b0b0b;
+    border-top: 1px solid rgba(255,255,255,.08);
+    color: var(--cn-gray);
+}
+
+.cn-footer-logo {
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+    .cn-footer-logo span {
+        color: var(--cn-red);
+    }
+
+/* LINKS */
+
+a {
+    text-decoration: none;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .cn-logo {
+        font-size: 23px;
+    }
+
+    .cn-tagline {
+        display: none;
+    }
+
+    .cn-card img {
+        height: 260px;
+    }
+
+    .cn-form-card {
+        padding: 18px;
+    }
+}
+
+
+/* HOME HERO */
+
+.cn-hero {
+    min-height: 490px;
+    display: flex;
+    align-items: center;
+    padding: 65px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(90deg, #101010 5%, rgba(20,20,20,.94) 40%, rgba(20,20,20,.35) 100%), linear-gradient(0deg, #141414, transparent 60%), url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=85") center/cover no-repeat;
+}
+
+.cn-hero-content {
+    max-width: 650px;
+    position: relative;
+    z-index: 1;
+}
+
+.cn-hero-label {
+    color: #e50914;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.cn-hero-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #e50914;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+.cn-hero-title {
+    font-size: clamp(35px, 5vw, 62px);
+    font-weight: 900;
+    line-height: 1.08;
+    margin: 20px 0;
+}
+
+    .cn-hero-title span {
+        color: #e50914;
+    }
+
+.cn-hero-description {
+    color: #cccccc;
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 550px;
+}
+
+/* FEATURE CARDS */
+
+.cn-feature-card {
+    display: block;
+    background: #242424;
+    border: 1px solid #363636;
+    padding: 28px;
+    border-radius: 10px;
+    color: white;
+    height: 100%;
+    transition: .25s;
+}
+
+    .cn-feature-card:hover {
+        transform: translateY(-6px);
+        border-color: #e50914;
+        color: white;
+    }
+
+.cn-feature-icon {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.cn-feature-card h4 {
+    font-weight: bold;
+}
+
+.cn-feature-card p {
+    color: #aaa;
+    min-height: 48px;
+}
+
+.cn-feature-card span {
+    color: #e50914;
+    font-weight: bold;
+}
+
+/* BOTTOM BANNER */
+
+.cn-bottom-banner {
+    background: #202020;
+    border: 1px solid #333;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* MOBILE HOME */
+
+@media (max-width: 768px) {
+    .cn-hero {
+        min-height: 420px;
+        padding: 30px 22px;
+        background-position: center;
+    }
+
+    .cn-hero-description {
+        font-size: 15px;
+    }
+
+    .cn-hero-title {
+        font-size: 36px;
+    }
+}

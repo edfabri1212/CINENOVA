@@ -1,0 +1,68 @@
+@model CineNova.Models.Pelicula
+
+@{
+    ViewData["Title"] = Model.Titulo;
+}
+
+<div class="cn-form-card">
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            @if (!string.IsNullOrWhiteSpace(Model.ImagenUrl))
+            {
+                <img src="@Model.ImagenUrl"
+                     alt="@Model.Titulo"
+                     class="img-fluid rounded w-100"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x600/242424/ffffff?text=CineNova';" />
+            }
+            else
+            {
+                <img src="https://placehold.co/400x600/242424/ffffff?text=CineNova"
+                     class="img-fluid rounded w-100"
+                     alt="Sin portada" />
+            }
+        </div>
+
+        <div class="col-md-8">
+            <span class="text-danger fw-bold">CINENOVA ORIGINAL</span>
+
+            <h1 class="fw-bold mt-2">@Model.Titulo</h1>
+
+            <div class="d-flex flex-wrap gap-3 text-secondary mb-3">
+                <span>@Model.Anio</span>
+                <span>@Model.Duracion minutos</span>
+                <span>@(Model.Clasificacion ?? "Sin clasificación")</span>
+            </div>
+
+            <p class="mb-3">
+                <strong>Categoría:</strong>
+                @(Model.Categoria?.Nombre ?? "Sin categoría")
+            </p>
+
+            <h5>Sinopsis</h5>
+            <p class="text-secondary">@Model.Descripcion</p>
+
+            <p>
+                <strong>Estado:</strong>
+                @if (Model.Estado)
+                {
+                    <span class="cn-badge-active">Disponible</span>
+                }
+                else
+                {
+                    <span class="cn-badge-inactive">No disponible</span>
+                }
+            </p>
+
+            <div class="d-flex flex-wrap gap-2 mt-4">
+                <a asp-action="Edit" asp-route-id="@Model.Id"
+                   class="btn btn-cn">Editar película</a>
+
+                <a asp-action="Index"
+                   class="btn btn-outline-secondary">Volver al catálogo</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+

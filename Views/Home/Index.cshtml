@@ -1,0 +1,103 @@
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<section class="cn-hero">
+    <div class="cn-hero-content">
+
+        <span class="cn-hero-label">
+            <span class="cn-hero-dot"></span>
+            BIENVENIDO A CINENOVA
+        </span>
+
+        <h1 class="cn-hero-title">
+            TU PRÓXIMA<br />
+            <span>HISTORIA FAVORITA</span>
+            COMIENZA AQUÍ
+        </h1>
+
+        <p class="cn-hero-description">
+            Explora un mundo de películas, descubre nuevas historias
+            y disfruta de tu pasión por el cine en un solo lugar.
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+            <a asp-controller="Peliculas"
+               asp-action="Index"
+               class="btn btn-cn btn-lg">
+                Explorar películas
+            </a>
+
+            <a asp-controller="Categorias"
+               asp-action="Index"
+               class="btn btn-outline-cn btn-lg">
+                Ver categorías
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<section class="py-5">
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+            <span class="text-danger fw-bold small">DESCUBRE</span>
+            <h2 class="fw-bold mb-0">Explora CineNova</h2>
+        </div>
+
+        <a asp-controller="Peliculas"
+           asp-action="Index"
+           class="text-danger fw-bold">
+            Ver catálogo →
+        </a>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <a asp-controller="Peliculas" asp-action="Index"
+               class="cn-feature-card">
+                <div class="cn-feature-icon">🎬</div>
+                <h4>Películas</h4>
+                <p>Explora nuestro catálogo cinematográfico.</p>
+                <span>Explorar →</span>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a asp-controller="Categorias" asp-action="Index"
+               class="cn-feature-card">
+                <div class="cn-feature-icon">🍿</div>
+                <h4>Categorías</h4>
+                <p>Encuentra películas según tus géneros favoritos.</p>
+                <span>Descubrir →</span>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a asp-controller="Peliculas" asp-action="Index"
+               class="cn-feature-card">
+                <div class="cn-feature-icon">⭐</div>
+                <h4>Descubre historias</h4>
+                <p>Encuentra nuevas películas para disfrutar.</p>
+                <span>Comenzar →</span>
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cn-bottom-banner text-center py-5">
+    <h2 class="fw-bold">El cine te espera</h2>
+    <p class="text-secondary">
+        Tu próxima película favorita está a un clic de distancia.
+    </p>
+
+    <a asp-controller="Peliculas"
+       asp-action="Index"
+       class="btn btn-cn mt-2">
+        Ver películas
+    </a>
+</section>

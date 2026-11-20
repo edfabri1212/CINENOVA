@@ -1,0 +1,76 @@
+@model IEnumerable<CineNova.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorías";
+}
+
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+    <div>
+        <h1 class="fw-bold">Categorías</h1>
+        <p class="text-secondary">Administra los géneros de CineNova.</p>
+    </div>
+
+    <a asp-action="Create" class="btn btn-cn">
+        + Nueva categoría
+    </a>
+</div>
+
+<div class="cn-form-card">
+    <div class="table-responsive">
+        <table class="table cn-table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Películas</th>
+                    <th>Estado</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="fw-bold">@item.Nombre</td>
+                            <td>@(string.IsNullOrWhiteSpace(item.Descripcion) ? "Sin descripción" : item.Descripcion)</td>
+                            <td>@(item.Peliculas?.Count ?? 0)</td>
+                            <td>
+                                @if (item.Estado)
+                                {
+                                    <span class="cn-badge-active">Activa</span>
+                                }
+                                else
+                                {
+                                    <span class="cn-badge-inactive">Inactiva</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                <div class="d-flex justify-content-center gap-2">
+                                    <a asp-action="Details" asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-info">Ver</a>
+
+                                    <a asp-action="Edit" asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-warning">Editar</a>
+
+                                    <a asp-action="Delete" asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center py-5 text-secondary">
+                            No hay categorías registradas.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

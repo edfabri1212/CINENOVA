@@ -1,0 +1,22 @@
+@model CineNova.Models.Categoria
+
+<div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+<div class="mb-3">
+    <label asp-for="Nombre" class="form-label"></label>
+    <input asp-for="Nombre" class="form-control cn-input" placeholder="Ej. Acción" />
+    <span asp-validation-for="Nombre" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Descripcion" class="form-label"></label>
+    <textarea asp-for="Descripcion" rows="3"
+              class="form-control cn-input"
+              placeholder="Describe esta categoría..."></textarea>
+    <span asp-validation-for="Descripcion" class="text-danger"></span>
+</div>
+
+<div class="form-check form-switch mb-3">
+    <input asp-for="Estado" class="form-check-input" />
+    <label asp-for="Estado" class="form-check-label"></label>
+</div>

@@ -1,0 +1,31 @@
+@model CineNova.Models.Categoria
+
+@{
+    ViewData["Title"] = "Editar categoría";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="cn-form-card">
+            <h2 class="fw-bold mb-2">Editar categoría</h2>
+            <p class="text-secondary mb-4">Modifica la información del género.</p>
+
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <partial name="_Form" model="Model" />
+
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-cn">Guardar cambios</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

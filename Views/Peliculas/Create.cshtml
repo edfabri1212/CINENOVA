@@ -1,0 +1,27 @@
+@model CineNova.Models.Pelicula
+
+@{
+    ViewData["Title"] = "Agregar película";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="cn-form-card">
+            <h2 class="fw-bold mb-2">Agregar película</h2>
+            <p class="text-secondary mb-4">Registra una nueva película en CineNova.</p>
+
+            <form asp-action="Create" method="post">
+                <partial name="_Form" model="Model" />
+
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-cn">Guardar película</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

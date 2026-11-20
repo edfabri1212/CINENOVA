@@ -1,0 +1,41 @@
+@model CineNova.Models.Pelicula
+
+@{
+    ViewData["Title"] = "Eliminar película";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="cn-form-card">
+
+            <h2 class="fw-bold text-danger">Eliminar película</h2>
+
+            <div class="alert alert-warning mt-3">
+                ¿Estás seguro de que deseas eliminar esta película?
+                Esta acción no se puede deshacer.
+            </div>
+
+            <h4>@Model.Titulo</h4>
+
+            <p class="text-secondary">
+                @Model.Anio · @Model.Duracion minutos
+            </p>
+
+            <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-danger">
+                        Sí, eliminar película
+                    </button>
+
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        Cancelar
+                    </a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+

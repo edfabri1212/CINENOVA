@@ -1,0 +1,196 @@
+@model IEnumerable<CineNova.Models.Pelicula>
+
+@{
+    ViewData["Title"] = "Películas";
+}
+
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+    <div>
+        <h1 class="fw-bold text-white">Catálogo de películas</h1>
+        <p class="text-secondary mb-0">
+            Descubre y administra tu colección cinematográfica.
+        </p>
+    </div>
+
+    <a asp-action="Create" class="btn btn-cn">
+        <i class="bi bi-plus-lg"></i> Agregar película
+    </a>
+</div>
+
+<div class="cn-form-card mb-4">
+    <form asp-action="Index" method="get">
+        <div class="row g-3 align-items-end">
+
+            <div class="col-md-5">
+                <label for="buscar" class="form-label text-white">
+                    Buscar película
+                </label>
+                <input type="text"
+                       id="buscar"
+                       name="buscar"
+                       value="@ViewBag.Buscar"
+                       class="form-control cn-input"
+                       placeholder="Escribe el título de una película..." />
+            </div>
+
+            <div class="col-md-4">
+                <label for="categoriaId" class="form-label text-white">
+                    Filtrar por categoría
+                </label>
+                <select id="categoriaId"
+                        name="categoriaId"
+                        class="form-select cn-input"
+                        asp-items="ViewBag.Categorias">
+                    <option value="">Todas las categorías</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 d-flex gap-2">
+                <button type="submit" class="btn btn-cn flex-fill">
+                    <i class="bi bi-search"></i> Buscar
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-outline-light flex-fill">
+                    Limpiar
+                </a>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="text-white mb-0">
+        Películas registradas
+    </h5>
+
+    <span class="text-secondary small">
+        Total: @Model.Count()
+    </span>
+</div>
+
+<div class="row g-4">
+
+    @if (Model.Any())
+    {
+        @foreach (var pelicula in Model)
+        {
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="cn-card h-100">
+
+                    @if (!string.IsNullOrWhiteSpace(pelicula.ImagenUrl))
+                    {
+                        <img src="@pelicula.ImagenUrl"
+                             alt="@pelicula.Titulo"
+                             loading="lazy"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x600/242424/ffffff?text=CineNova';" />
+                    }
+                    else
+                    {
+                        <img src="https://placehold.co/400x600/242424/ffffff?text=CineNova"
+                             alt="Sin portada"
+                             loading="lazy" />
+                    }
+
+                    <div class="cn-card-body d-flex flex-column">
+
+                        <h5 class="fw-bold text-white">
+                            @pelicula.Titulo
+                        </h5>
+
+                        <p class="small text-secondary mb-2">
+                            <i class="bi bi-calendar3"></i>
+                            @pelicula.Anio
+
+                            <span class="mx-1">·</span>
+
+                            <i class="bi bi-clock"></i>
+                            @pelicula.Duracion min
+                        </p>
+
+                        <p class="small text-secondary mb-3">
+                            <i class="bi bi-tag"></i>
+                            @(pelicula.Categoria?.Nombre ?? "Sin categoría")
+                        </p>
+
+                        <div class="mb-3">
+                            @if (pelicula.Estado)
+                            {
+                                <span class="cn-badge-active">
+                                    Disponible
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="cn-badge-inactive">
+                                    No disponible
+                                </span>
+                            }
+                        </div>
+
+                        <div class="mt-auto d-grid gap-2">
+
+                            <a asp-action="Details"
+                               asp-route-id="@pelicula.Id"
+                               class="btn btn-cn btn-sm">
+                                <i class="bi bi-eye"></i>
+                                Ver detalles
+                            </a>
+
+                            <div class="d-flex gap-2">
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@pelicula.Id"
+                                   class="btn btn-outline-warning btn-sm flex-fill">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Editar
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@pelicula.Id"
+                                   class="btn btn-outline-danger btn-sm flex-fill">
+                                    <i class="bi bi-trash"></i>
+                                    Eliminar
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12">
+            <div class="cn-form-card text-center py-5">
+
+                <i class="bi bi-film display-3 text-secondary"></i>
+
+                <h3 class="text-white mt-3">
+                    No se encontraron películas
+                </h3>
+
+                <p class="text-secondary">
+                    No hay películas que coincidan con tu búsqueda.
+                    Puedes agregar una nueva película o limpiar los filtros.
+                </p>
+
+                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                    <a asp-action="Create" class="btn btn-cn">
+                        <i class="bi bi-plus-lg"></i>
+                        Agregar película
+                    </a>
+
+                    <a asp-action="Index" class="btn btn-outline-light">
+                        Limpiar filtros
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    }
+
+</div>
